@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Appreciation</title>
+    <style>
+        .certificate-container {
+            width: 800px;
+            height: 600px;
+            padding: 20px;
+            text-align: center;
+            border: 10px solid #0a2351;
+            border-radius: 10px;
+            position: relative;
+            margin: 0 auto;
+            background: linear-gradient(45deg, #fff 85%, #0a2351 85%);
+        }
+
+        .certificate-header {
+            margin: 40px 0;
+        }
+
+        .certificate-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 50px;
+            color: #0a2351;
+        }
+
+        .certificate-subtitle {
+            font-size: 20px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .recipient-name {
+            font-family: 'Tangerine', cursive;
+            font-size: 40px;
+            color: #0a2351;
+            margin: 40px 0;
+        }
+
+        .certificate-text {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 40px 0;
+            padding: 0 60px;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+        }
+
+        .signature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-top: 2px solid #333;
+            margin: 10px 0;
+        }
+
+        .signature-title {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .certificate-seal {
+            position: absolute;
+            right: 80px;
+            bottom: 120px;
+            width: 100px;
+            height: 100px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #0a2351;
+        }
+
+        .corner-decoration {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #ffd700;
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="corner-decoration top-left"></div>
+        <div class="corner-decoration top-right"></div>
+        <div class="corner-decoration bottom-left"></div>
+        <div class="corner-decoration bottom-right"></div>
+
+        <div class="certificate-header">
+            <h1 class="certificate-title">Certificate</h1>
+            <div class="certificate-subtitle">OF APPRECIATION</div>
+        </div>
+
+        <div class="recipient-name">
+            <%= name %>
+        </div>
+
+        <div class="certificate-text">
+            <%= message %>
+        </div>
+
+        <div class="signature-section">
+            <div class="signature">
+                <div class="signature-line"></div>
+                <div class="signature-title">Supervisor</div>
+            </div>
+            <div class="signature">
+                <div class="signature-line"></div>
+                <div class="signature-title">Manager</div>
+            </div>
+        </div>
+
+        <div class="certificate-seal">
+            <img src="/images/seal.png" alt="Seal" width="80">
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .certificate-container {
+      width: 80%;
+      margin: 50px auto;
+      background: #fff;
+      border: 10px solid #0b0142ea;
+      border-radius: 15px;
+      padding: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* For absolute positioning inside */
+      text-align: center;
+    }
+
+    /* 👇 Logo positioned at top-left inside border */
+    .logo-top-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 280px;
+      height: auto;
+    }
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      color: #0b0142ea;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .header h3 {
+      font-size: 1.5rem;
+      color: #0b0142ea;
+      margin-top: 10px;
+    }
+
+    .certificate-content {
+      font-size: 1.5rem;
+      color: #333;
+      line-height: 1.8;
+      margin: 40px 0;
+    }
+
+    .certificate-content strong {
+      font-size: 1.8rem;
+      color: #0b0142ea;
+    }
+
+    .footer {
+      margin-top: 50px;
+    }
+
+    .footer p {
+      font-size: 1rem;
+      color: #0b0142ea;
+    }
+
+    .footer .signature {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .footer .date {
+      font-size: 1rem;
+      color: #333;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="certificate-container">
+    <!-- 👇 Logo at the top-left inside the border -->
+     <img src="/IMG/desbord_logo.png" alt="Logo" class="logo-top-left">
+
+    <div class="header">
+      <h1>RID BHARAT</h1>
+      <h3>Certificate of Achievement</h3>
+    </div>
+
+    <div class="certificate-content">
+      <p><strong>NAME:</strong> <%= data.name %></p>
+      <p>has successfully completed the course</p>
+      <p><strong><%= data.course %></strong></p>
+      <p>RID BHART </p>
+    </div>
+
+    <div class="footer">
+      <p>Issued by: RID BHARAT</p>
+      <div class="signature">_________________________</div>
+      <p class="date">Date: <%= data.date.toDateString() %></p>
+    </div>
+  </div>
+
+</body>
+</html> 

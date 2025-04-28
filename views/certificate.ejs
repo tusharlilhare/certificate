@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate of Appreciation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f0f0f0;
+    }
+
+    .certificate-container {
+      width: 800px;
+      height: 600px;
+      padding: 20px;
+      text-align: center;
+      border: 10px solid #0a2351;
+      border-radius: 10px;
+      position: relative;
+      margin: 50px auto;
+      background: linear-gradient(45deg, #fff 85%, #0a2351 85%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .certificate-header {
+      margin-top: 20px;
+    }
+
+    .certificate-title {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 50px;
+      color: #0a2351;
+      margin: 0;
+    }
+
+    .certificate-subtitle {
+      font-size: 22px;
+      color: #333;
+      margin: 10px 0 30px;
+    }
+
+    .logo-top-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 200px;
+      height: auto;
+    }
+
+    .certificate-content {
+      font-size: 18px;
+      color: #222;
+      margin: 30px 60px;
+      line-height: 1.8;
+    }
+
+    .certificate-content strong {
+      color: #0a2351;
+    }
+
+    .footer {
+      position: absolute;
+      /* bottom: 30px; */
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .signature {
+      margin: 10px auto;
+      width: 200px;
+      border-top: 2px solid #333;
+    }
+
+    .date {
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .corner-decoration {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 3px solid #ffd700;
+    }
+
+    .top-left {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .top-right {
+      top: 20px;
+      right: 20px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .bottom-left {
+      bottom: 20px;
+      left: 20px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .bottom-right {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate-container">
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration top-right"></div>
+    <div class="corner-decoration bottom-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+
+    <div class="certificate-header">
+      <h1 class="certificate-title">Certificate</h1>
+      <div class="certificate-subtitle">OF APPRECIATION</div>
+    </div>
+
+    <img src="/IMG/desbord_logo.png" alt="Logo" class="logo-top-left" />
+
+    <div class="certificate-content">
+      <p><strong>NAME:</strong> <%= data.name %></p>
+      <p>has successfully completed the course</p>
+      <p><strong><%= data.course %></strong></p>
+      <p>RID BHARAT</p>
+    </div>
+
+    <div class="footer">
+      <p>Issued by: RID BHARAT</p>
+      <div class="signature">_________________________</div>
+      <p class="date">Date: <%= data.date.toDateString() %></p>
+    </div>
+  </div>
+</body>
+</html>

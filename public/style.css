@@ -1,0 +1,29 @@
+body {
+    font-family: Arial;
+    background: #101010;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-box {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px green;
+  }
+  input, button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+  }
+  button {
+    background: green;
+    color: white;
+    cursor: pointer;
+  }
+  
