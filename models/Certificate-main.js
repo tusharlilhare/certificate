@@ -60,21 +60,35 @@
 
 
 
+// const mongoose = require('mongoose');
+
+// const CertificateSchema = new mongoose.Schema({
+//   name: {
+//     type: String,
+//     required: true
+//   },
+//   course: {
+//     type: String,
+//     required: true
+//   },
+//   date: {
+//     type: Date,
+//     default: Date.now
+//   }
+// });
+
+// module.exports = mongoose.model('Certificate', CertificateSchema);
+
+
 const mongoose = require('mongoose');
 
 const CertificateSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  course: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  name: { type: String, required: true },
+  age: Number,
+  course: { type: String, required: true },
+  branch: String,
+  year: Number,
+  date: { type: Date, default: Date.now }  // <-- Added date field with default
 });
 
-module.exports = mongoose.model('Certificate', CertificateSchema);
+module.exports = mongoose.model('Certificate', CertificateSchema, 'Certificate-main');

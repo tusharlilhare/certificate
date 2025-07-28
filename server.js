@@ -125,10 +125,147 @@
 
 
 
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const Certificate = require('./models/Certificate-main');
+// const path = require('path');
+
+// const app = express();
+// const PORT = 5000;
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// // MongoDB connection
+// const connectDB = async () => {
+//   try {
+//     const MONG_URL = 'mongodb://localhost:27017/certifiket';
+//     const conn = await mongoose.connect(MONG_URL, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+//     console.log(`MongoDB connected: ${conn.connection.host}`);
+//   } catch (err) {
+//     console.error('MongoDB connection failed:', err.message);
+//     process.exit(1);
+//   }
+// };
+
+// connectDB();
+
+// // Static folder
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // Set view engine
+// app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+
+// // ✅ ONLY ONE /generate route — case-insensitive & trimmed match
+// app.post('/generate', async (req, res) => {
+//   const { name, course } = req.body;
+
+//   try {
+//     const nameTrimmed = name.trim();
+//     const courseTrimmed = course.trim();
+
+//     const user = await Certificate.findOne({
+//       name: { $regex: new RegExp("^" + nameTrimmed + "$", "i") },
+//       course: { $regex: new RegExp("^" + courseTrimmed + "$", "i") }
+//     });
+
+//     if (!user) {
+//       return res.status(404).render('notfound', { name, course });
+//     }
+
+//     res.render('certificate', { data: user });
+//   } catch (error) {
+//     console.error("Error generating certificate:", error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+// // Start server
+// app.listen(PORT, () => {
+//   console.log(`🚀 Server is running at http://localhost:${PORT}`);
+// });
+
+
+
+
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const Certificate = require('./models/Certificate-main');
+// const path = require('path');
+
+// const app = express();
+// const PORT = 5000;
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// // MongoDB Atlas connection
+// const connectDB = async () => {
+//   try {
+// const MONG_URL = 'mongodb+srv://Certificate:TJn6Ph9dzRpqOfZq@certificate.vobt3m9.mongodb.net/Certificate?retryWrites=true&w=majority';
+
+
+    
+//     const conn = await mongoose.connect(MONG_URL, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+
+//     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+//   } catch (err) {
+//     console.error('❌ MongoDB connection failed:', err.message);
+//     process.exit(1);
+//   }
+// };
+
+// connectDB();
+
+// // Set view engine and static files
+// app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // POST /generate - find user and render certificate
+// app.post('/generate', async (req, res) => {
+//   const { name, course } = req.body;
+
+//   try {
+//     const user = await Certificate.findOne({
+//       name: { $regex: new RegExp("^" + name.trim() + "$", "i") },
+//       course: { $regex: new RegExp("^" + course.trim() + "$", "i") }
+//     });
+
+//     if (!user) {
+//       return res.status(404).render('notfound', { name, course });
+//     }
+
+//     res.render('certificate', { data: user });
+//   } catch (error) {
+//     console.error("❌ Error generating certificate:", error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+// // Start the server
+// app.listen(PORT, () => {
+//   console.log(`🚀 Server is running at http://localhost:${PORT}`);
+// });
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Certificate = require('./models/Certificate');
+const Certificate = require('./models/Certificate-main');
 const path = require('path');
 
 const app = express();
@@ -139,55 +276,57 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB connection
+// MongoDB Atlas connection
 const connectDB = async () => {
   try {
-    const MONG_URL = 'mongodb://localhost:27017/certifiket';
+ const MONG_URL = 'mongodb+srv://Certificate:TJn6Ph9dzRpqOfZq@certificate.vobt3m9.mongodb.net/Certificate?retryWrites=true&w=majority';
+
     const conn = await mongoose.connect(MONG_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
+    console.log(`✅ MongoDB connected: ${conn.connection.host}`);
   } catch (err) {
-    console.error('MongoDB connection failed:', err.message);
+    console.error('❌ MongoDB connection failed:', err.message);
     process.exit(1);
   }
 };
 
 connectDB();
 
-// Static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Set view engine
+// Set view engine and static files
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ ONLY ONE /generate route — case-insensitive & trimmed match
+// POST /generate - find user and render certificate
 app.post('/generate', async (req, res) => {
   const { name, course } = req.body;
 
   try {
-    const nameTrimmed = name.trim();
-    const courseTrimmed = course.trim();
-
     const user = await Certificate.findOne({
-      name: { $regex: new RegExp("^" + nameTrimmed + "$", "i") },
-      course: { $regex: new RegExp("^" + courseTrimmed + "$", "i") }
+      name: { $regex: new RegExp("^" + name.trim() + "$", "i") },
+      course: { $regex: new RegExp("^" + course.trim() + "$", "i") }
     });
 
     if (!user) {
       return res.status(404).render('notfound', { name, course });
     }
 
-    res.render('certificate', { data: user });
+    // Convert Mongoose doc to plain object to safely add/override properties
+    const userData = user.toObject();
+
+    // Ensure date is a Date object (fallback to current date if missing)
+    userData.date = userData.date ? new Date(userData.date) : new Date();
+
+    res.render('certificate', { data: userData });
   } catch (error) {
-    console.error("Error generating certificate:", error);
+    console.error("❌ Error generating certificate:", error);
     res.status(500).send('Internal Server Error');
   }
 });
 
-// Start server
+// Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server is running at http://localhost:${PORT}`);
 });
